@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import Link from "next/link";
-import PostModel from "../backend/models/PostModel";
+import PostModel from "../../backend/models/PostModel";
 
 export async function getStaticProps() {
   const allPostData = await PostModel.find();
@@ -15,7 +15,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ allPostString }) {
+export default function Posts({ allPostString }) {
   var myAllPost;
   try {
     myAllPost = JSON.parse(allPostString);
@@ -33,13 +33,7 @@ export default function Home({ allPostString }) {
 
       <main className={styles.main}>
         <Image priority src="/images/profile.jpg" height={144} width={144} />
-        <p className={styles.description}>
-          This is the home page of my website
-        </p>
-
-        <Link href="/posts">
-          <a>Go to posts page</a>
-        </Link>
+        <p className={styles.description}>This is the posts page</p>
       </main>
 
       {myAllPost.map((post) => (
@@ -49,7 +43,6 @@ export default function Home({ allPostString }) {
           </Link>{" "}
           <br />
           {post.description}
-          <br />
         </li>
       ))}
 
@@ -68,17 +61,3 @@ export default function Home({ allPostString }) {
     </div>
   );
 }
-
-// async function myPaths() {
-//   // Return a list of possible value for slug
-//   const allPostData1 = await PostModel.find();
-//   const paths = allPostData1.map((post) => {
-//     return { params: { slug: post.slug } };
-//   });
-//   console.log("newpaths", paths);
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
-// myPaths();
