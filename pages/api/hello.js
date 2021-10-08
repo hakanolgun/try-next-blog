@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import PostModel from "../../models/PostModel";
+import PostModel from "../../backend/models/PostModel.js";
 
 PostModel.create({
   title: "Post 1",

@@ -32,7 +32,7 @@ export default function Home({ allPostString }) {
       </Head>
 
       <main className={styles.main}>
-        <Image priority src="/images/profile.jpg" height={144} width={144} />
+        <Image priority src="/images/profile.jpg" alt="profile" height={144} width={144} />
         <p className={styles.description}>
           This is the home page of my website
         </p>

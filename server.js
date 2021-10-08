@@ -6,14 +6,17 @@ const mongoose = require("mongoose");
 dotenv.config();
 
 // CONNECT DB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-
-
-
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB Connected :D");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -30,8 +33,9 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(process.env.PORT, (err) => {
+  const port = process.env.PORT || 7703;
+  server.listen(port, (err) => {
     if (err) throw err;
-    console.log("Ready on http://localhost:7703");
+    console.log(`Ready on http://localhost:${port}`);
   });
 });
