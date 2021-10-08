@@ -7,10 +7,13 @@ dotenv.config();
 
 // CONNECT DB
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://hakan:16g0JebbnlKtB38p@cluster0.mq4pj.mongodb.net/hakan-blog?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("DB Connected :D");
   })
